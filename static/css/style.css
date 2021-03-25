@@ -1,0 +1,7 @@
+.pro{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.pro .title{
+    font-size: 12px;
+}
