@@ -1,0 +1,15 @@
+<form method="post" action="/authen/signout">
+    <button class="btn">
+        Sign Out
+    </button>
+</form>
+
+<a href="/authen/editpassword/{{v['id']}}">Change Password</a><br><br>
+<a href="/category">Manage Category</a><br><br>
+<a href="/brand">Manage Brand</a><br><br>
+<a href="/product">Manage Product</a><br><br>
+<a href="/account">Manage Account</a><br><br>
+<a href="/role">Manage Role</a><br><br>
+Welcome: <b>{{v['usr']}}</b><br>
+Email: <b>{{v['eml']}}</b><br>
+Role: <b>{{u[1]}}</b>

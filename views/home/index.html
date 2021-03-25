@@ -1,0 +1,49 @@
+{% extends 'shared/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-3">
+        <h2>Brand</h2>
+        <ul>
+            {% for v in brr %}
+                <li>
+                    <a href="/home/brand/{{v[0]}}">{{v[1]}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Category</h2>
+        <ul>
+            {% for v in crr %}
+                <li>
+                    <a href="/home/category/{{v[0]}}">{{v[1]}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-9">
+        <ul class="pagination">
+            {%for i in range(1, n+1) %}
+            <li class="page-item">
+                <a class="page-link" href="/{{i}}">{{i}}</a>
+            </li>
+            {%endfor%}
+        </ul>
+        <div class="row">
+        {% for v in arr %}
+            <div class="col-3">
+                <div class="pro">
+                    <h1 class="title"><a href="/home/detail/{{v[0]}}">{{v[1]}}</a></h1>
+                    <a href="/home/detail/{{v[0]}}"><img class="img-fluid" src="/image/{{v[5]}}"></a>
+                    <div>Price: <b>{{v[4]}}</b>VND</div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

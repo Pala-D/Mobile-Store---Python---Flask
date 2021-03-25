@@ -1,0 +1,35 @@
+<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+
+<h2>Username: {{a['usr']}}</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Checked</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for v in arr %}
+        <tr>
+            <td>{{v[1]}}</td>
+            <td>
+                {%if v[0] in brr%}
+                    <input type="checkbox" Checked="Checked" name="c" value="{{v[0]}}">
+                {%else%}
+                    <input type="checkbox" name="c" value="{{v[0]}}">
+                {%endif%}
+            </td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+$('input[name="c"]').click(function(){
+    var o = {roleid: $(this).val(), accountid: '{{a['id']}}'};
+    $.post('/account/addrole', o, function(data){
+        alert(data);
+    });
+});
+</script>

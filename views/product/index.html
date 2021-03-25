@@ -1,0 +1,77 @@
+<title>Product</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/kendo/css/kendo.common.min.css"/>
+<link rel="stylesheet" href="/kendo/css/kendo.default.min.css"/>
+<link rel="stylesheet" href="/kendo/css/kendo.default.mobile.min.css"/>
+<script src="/kendo/js/jquery.min.js"></script>
+<script src="/kendo/js/jszip.min.js"></script>
+<script src="/kendo/js/kendo.all.min.js"></script>
+
+<button id="pdf" class="btn btn-primary">Export to PDF</button>
+<a href="/product/add" class="btn btn-primary">Add Product</a>
+<form method="post" action="/product/delall">
+    <div class="content-wrapper">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>
+                    <button>Delete All</button>
+                </td>
+                <th>Id</th>
+                <th>ProductName</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in arr %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="a" value="{{i[0]}}">
+                </td>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[4] }}</td>
+                <td><img src ="/image/{{i[5]}}" width = "60"></td>
+                <td>{{ i[6] }}</td>
+                <td>{{ i[7] }}</td>
+                <td>
+                    <a href="/product/delete/{{i[0]}}">Delete</a>
+                </td>
+                <td>
+                    <a href="/product/edit/{{i[0]}}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</form>
+<script type="text/javascript">
+$(pdf).click(function() {
+        // Convert the DOM element to a drawing using kendo.drawing.drawDOM
+        kendo.drawing.drawDOM($(".content-wrapper"))
+        .then(function(group) {
+            // Render the result as a PDF file
+            return kendo.drawing.exportPDF(group, {
+                paperSize: "auto",
+                margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+            });
+        })
+        .done(function(data) {
+            // Save the PDF file
+            kendo.saveAs({
+                dataURI: data,
+                fileName: "Product.pdf",
+                proxyURL: "xin chao"
+            });
+        });
+    });
+</script>
+

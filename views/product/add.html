@@ -1,0 +1,41 @@
+<form method = "post" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input type = "text" name = "name">
+    </div>
+    <div>
+        <label>Brand</label>
+        <select name = "brand">
+            {%for b in brr%}
+                <option value ="{{b[0]}}">{{b[1]}}</option>
+            {%endfor%}
+        </select>
+    </div>
+    <div>
+        <label>Category</label>
+        <select name = "cat">
+            {%for c in crr%}
+                <option value ="{{c[0]}}">{{c[1]}}</option>
+            {%endfor%}
+        </select>
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="number" name="price">
+    </div>
+    <div>
+        <label>Quantity</label>
+        <input type="number" name="qty">
+    </div>
+    <div>
+        <label>Image</label>
+        <input type="file" name="f">
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea name = "des"></textarea>
+    </div>
+    <div>
+        <button>Save</button>
+    </div>
+</form>

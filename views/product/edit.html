@@ -1,0 +1,50 @@
+<form method = "post" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input type = "text" name = "name" value="{{u[1]}}">
+    </div>
+    <div>
+        <label>Brand</label>
+        <select name = "brand">
+        {%for v in brr%}
+            {%if v[0] == u[2]%}
+                <option selected value = "{{v[0]}}">{{v[1]}}</option>
+            {%else%}
+                <option value = "{{v[0]}}">{{v[1]}}</option>
+            {%endif%}
+        {%endfor%}
+        </select>
+    </div>
+    <div>
+        <label>Category</label>
+        <select name = "cat">
+        {%for v in crr%}
+            {%if v[0] == u[3]%}
+                <option selected value = "{{v[0]}}">{{v[1]}}</option>
+            {%else%}
+                <option value = "{{v[0]}}">{{v[1]}}</option>
+            {%endif%}
+        {%endfor%}
+        </select>
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="number" name="price" value="{{u[4]}}">
+    </div>
+    <div>
+        <label>Quantity</label>
+        <input type="number" name="qty" value="{{u[6]}}">
+    </div>
+    <div>
+        <label>Image</label>
+        <input type="hidden" name="img" value="{{u[5]}}">
+        <input type="file" name="f">
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea name = "des">{{u[7]}}</textarea>
+    </div>
+    <div>
+        <button>Save</button>
+    </div>
+</form>
